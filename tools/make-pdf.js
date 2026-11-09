@@ -83,6 +83,10 @@ const CSS = `
   .callout { margin: 16pt 0; padding: 12pt 14pt; border-radius: 4pt; background: #000; color: #fff; }
   .callout > :first-child { margin-top: 0; }
   .callout > :last-child { margin-bottom: 0; }
+  /* a passage set in from the left, its subheading in italics */
+  .aside-indent { margin: 14pt 0; padding-left: 1.6em; }
+  .aside-indent h4 { margin-top: 0; font-style: italic; }
+  .aside-indent > :last-child { margin-bottom: 0; }
   /* the sections in the site's band (the Overview, then Basis and Contents
      together) on pages of their own in its midnight green, edge to edge,
      their text centred on the page */
