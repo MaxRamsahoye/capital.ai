@@ -1122,12 +1122,45 @@
 
     /* the opening quotes above the Introduction: the first at the top, and
        (as flex items, whose margins don't collapse) only one gap between */
+    /* two images side by side above them, the same height (each grows in
+       proportion to its width-to-height ratio), a caption below */
+    .article-body .article-figure {
+      max-width: 760px;
+      margin: 0;
+    }
+
+    .article-figure .figure-images {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .article-figure .figure-images img {
+      display: block;
+      flex-basis: 0;
+      min-width: 0;
+      width: 100%;
+      height: auto;
+    }
+
+    .article-figure figcaption {
+      margin-top: 12px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.68em;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+
     #overview > .epigraph:first-of-type {
       margin-top: 0;
     }
 
     #overview > .epigraph + .epigraph {
       margin-top: 0;
+    }
+
+    #overview > .article-figure + .epigraph {
+      margin-top: 48px;
     }
 
     .article-body #overview + section {
@@ -2184,6 +2217,14 @@
                 <polygon points="14,19.469 21.031,8.531 14,11.813 6.969,8.531"/>
               </svg>
               </button>
+
+              <figure class="article-figure">
+                <div class="figure-images">
+                  <img src="assets/paperclip-maximiser.jpg" width="1080" height="610" style="flex-grow: 1.7705" loading="lazy" alt="A cracked Earth fed into a funnel above a machine that pours out a stream of paperclips, beside the words: Could an AI Paperclip Maximizer machine turn the earth into paperclips?">
+                  <img src="assets/recycling-chipper.jpg" width="764" height="1067" style="flex-grow: 0.716" loading="lazy" alt="A grinning businessman in a suit pushes the Earth into a wood chipper labelled CHIPPER, which sprays out banknotes">
+                </div>
+                <figcaption>&lsquo;The Paperclip Maximiser&rsquo; by Space Travel Future <span class="amp">&amp;</span> &lsquo;Recycling/Chipper&rsquo; by Steve Cutts</figcaption>
+              </figure>
 
               <figure class="epigraph">
                 <blockquote><p>‘Any sufficiently complex and adaptive system is indistinguishable from (an) intelligent agency’</p></blockquote>
