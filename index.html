@@ -1303,7 +1303,7 @@
        below in small type */
     .article-body .epigraph {
       max-width: 620px;
-      margin: 28px 0 32px 2em;
+      margin: 44px 0 48px 2em;
     }
 
     .article-body .epigraph blockquote {
@@ -1325,7 +1325,7 @@
     /* longer quotations set in from the left, with a thin rule */
     .article-body .block-quote {
       max-width: 700px;
-      margin: 28px 0 1em;
+      margin: 40px 0 40px;
       padding-left: 1.2em;
       border-left: 1px solid color-mix(in srgb, currentColor 30%, transparent);
     }
@@ -1357,6 +1357,30 @@
       .article-body .callout {
         padding: 24px 20px 26px;
       }
+    }
+
+    /* two or more quotes together: closer to each other than to the text
+       around them */
+    .article-body .epigraph:has(+ .epigraph) {
+      margin-bottom: 22px;
+    }
+
+    .article-body .epigraph + .epigraph {
+      margin-top: 22px;
+    }
+
+    .article-body .block-quote:has(+ .block-quote) {
+      margin-bottom: 18px;
+    }
+
+    .article-body .block-quote + .block-quote {
+      margin-top: 18px;
+    }
+
+    /* a black line across the text column above each Part */
+    .article-body section[id^="part-"] {
+      border-top: 1px solid var(--canvas-ink);
+      padding-top: 56px;
     }
 
     /* lists with a bold label for each item */

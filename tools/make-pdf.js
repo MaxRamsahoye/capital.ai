@@ -54,13 +54,21 @@ const CSS = `
   #part-3 h4 { font-size: 15pt; margin-top: 20pt; }
   h5 { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 9pt; letter-spacing: 0.06em; text-transform: uppercase; }
   /* epigraphs: italic, set in, the source below in small grey IBM Plex */
-  .epigraph { margin: 14pt 0 14pt 1.6em; break-inside: avoid; }
+  .epigraph { margin: 20pt 0 20pt 1.6em; break-inside: avoid; }
   .epigraph blockquote { margin: 0; }
   .epigraph blockquote p { margin: 0; font-style: italic; }
   .epigraph figcaption { margin-top: 3pt; font-family: 'IBM Plex Sans', sans-serif; font-size: 8.5pt; color: #8c8c8c; }
   /* longer quotations: set in, with a thin rule */
-  .block-quote { margin: 14pt 0 9pt; padding-left: 1em; border-left: 0.5pt solid #b0b2b6; }
+  .block-quote { margin: 16pt 0 16pt; padding-left: 1em; border-left: 0.5pt solid #b0b2b6; }
   .block-quote p { margin: 0; }
+  /* quotes together: closer to each other than to the text around them */
+  .epigraph:has(+ .epigraph) { margin-bottom: 9pt; }
+  .epigraph + .epigraph { margin-top: 9pt; }
+  .block-quote:has(+ .block-quote) { margin-bottom: 7pt; }
+  .block-quote + .block-quote { margin-top: 7pt; }
+  /* a black line above each Part */
+  section[id^="part-"] { border-top: 0.75pt solid #000; padding-top: 14pt; }
+  section[id^="part-"] > h2:first-child { margin-top: 0; }
   /* lists with a bold label for each item, an em dash before each */
   .label-list { list-style: none; margin: 0 0 9pt; padding: 0; }
   .label-list li { margin: 0 0 6pt; padding-left: 1.3em; text-indent: -1.3em; break-inside: avoid; }
