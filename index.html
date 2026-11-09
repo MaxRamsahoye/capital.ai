@@ -1096,6 +1096,23 @@
       color: var(--canvas-ink);
     }
 
+    /* the Introduction (#overview) stays on the page's own background; the
+       band starts with the Structure after it */
+    #overview {
+      --canvas-bg: var(--frame-bg);
+      --canvas-ink: var(--frame-ink);
+      --canvas-accent: var(--frame-ink);
+      color: var(--frame-ink);
+    }
+
+    html.colour #overview a[href^="http"] {
+      color: var(--link-blue);
+    }
+
+    .article-body #overview + section.in-band {
+      padding-top: 104px;
+    }
+
     #overview > :last-child {
       margin-bottom: 0;
     }
@@ -2110,7 +2127,7 @@
               <p>Ultimately, I aim to cohere AI theory, Systems theory (Cybernetics), Economic Theory, Evolutionary Theory, Accelerationist theory and Critical Theory (New Materialism) into a cross-disciplinary, anti-capitalist paradigm, metanarrative and aesthetic.</p>
             </section>
 
-            <section id="structure" class="in-band band-alt">
+            <section id="structure" class="in-band">
               <h2><a class="heading-link" href="#structure">Structure</a></h2>
 
               <h3 id="structure-part-1"><a class="heading-link" href="#structure-part-1">Part 1: Capitalism as an Artificial Superintelligence</a></h3>
@@ -2126,7 +2143,7 @@
               <p>In Part 3, I discuss two potential criticisms of the Capital-AI model. Firstly, I respond to the objection that capitalism is aligned with human values and therefore that it should be conceptualised as an aligned AI rather than an unaligned AI. Secondly, I address the concern that the model results in a fatalistic attitude towards the future that reinforces capitalist hegemony.</p>
             </section>
 
-            <section id="contents" class="in-band" data-toc="off">
+            <section id="contents" class="in-band band-alt" data-toc="off">
               <h2><a class="heading-link" href="#contents">Contents</a></h2>
 
               <ul class="dash-list live-list">

@@ -90,6 +90,14 @@ const CSS = `
   .band-page:has(> section.band-alt:first-child) { justify-content: flex-start; }
   .band-page > section.band-alt:first-child { margin-top: -24mm; padding-top: 30mm; padding-bottom: 20mm; }
   .band-page section.band-alt + section { margin-top: 38pt; }
+  /* last on its page (Contents), it runs down to the bottom edge, filling
+     the page below the section before it */
+  .band-page:has(> section.band-alt:last-child) { justify-content: flex-start; padding-top: 18mm; }
+  .band-page > section.band-alt:last-child { flex-grow: 1; margin-top: 14pt; margin-bottom: -24mm; padding: 10mm 24mm 20mm; }
+  /* the Introduction (the site's Overview) on the page's own white, as on
+     the site, starting a page of its own */
+  .intro-page { break-before: page; }
+  .intro-page h2 { margin-top: 0; }
   /* the article proper starts on a page of its own */
   .article-start { break-before: page; }
   .article-start > h2:first-child { margin-top: 0; }
@@ -138,7 +146,7 @@ const CSS = `
     '<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@700&display=swap" rel="stylesheet">' +
     '<style>' + CSS + '</style></head><body>' +
     '<div class="title-page"><p class="author">' + parts.author + '</p><h1>' + parts.title + '</h1><p class="subtitle">' + parts.subtitle + '</p></div>' +
-    parts.bandPages.map((h) => '<div class="band-page">' + h + '</div>').join('') +
+    parts.bandPages.map((h, i) => '<div class="' + (i === 0 ? 'intro-page' : 'band-page') + '">' + h + '</div>').join('') +
     parts.rest.replace('<section', '<section class="article-start"') + '</body></html>';
   await page.setContent(doc, { waitUntil: 'load', timeout: 20000 }).catch(() => page.setContent(doc, { waitUntil: 'domcontentloaded' }));
   // the margins' type is not in the page itself, so load it by name
