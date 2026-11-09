@@ -1426,10 +1426,22 @@
       margin-top: 18px;
     }
 
-    /* a black line across the text column above each Part */
-    .article-body section[id^="part-"] {
-      border-top: 1px solid var(--canvas-ink);
+    /* a black line across the whole page between the Parts (above Parts 2
+       and 3; Part 1 follows the band) */
+    .article-body :is(#part-2, #part-3) {
+      position: relative;
       padding-top: 56px;
+    }
+
+    .article-body :is(#part-2, #part-3)::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 100vw;
+      height: 1.5px;
+      transform: translateX(-50%);
+      background: var(--canvas-ink);
     }
 
     /* lists with a bold label for each item */

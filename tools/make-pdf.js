@@ -71,9 +71,9 @@ const CSS = `
   .article-figure .figure-images { display: flex; gap: 6pt; align-items: flex-start; }
   .article-figure .figure-images img { display: block; flex-basis: 0; min-width: 0; width: 100%; height: auto; }
   .article-figure figcaption { margin-top: 9pt; text-align: center; font-family: 'IBM Plex Sans', sans-serif; font-size: 8.5pt; color: #8c8c8c; }
-  /* a black line above each Part */
-  section[id^="part-"] { border-top: 0.75pt solid #000; padding-top: 14pt; }
-  section[id^="part-"] > h2:first-child { margin-top: 0; }
+  /* a black line across the whole page between the Parts (above Parts 2 and 3) */
+  :is(#part-2, #part-3) { border-top: 1.1pt solid #000; margin-left: -24mm; margin-right: -24mm; padding: 14pt 24mm 0; }
+  :is(#part-2, #part-3) > h2:first-child { margin-top: 0; }
   /* lists with a bold label for each item, an em dash before each */
   .label-list { list-style: none; margin: 0 0 9pt; padding: 0; }
   .label-list li { margin: 0 0 6pt; padding-left: 1.3em; text-indent: -1.3em; break-inside: avoid; }
