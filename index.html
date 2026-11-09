@@ -1131,8 +1131,14 @@
       margin: 32px 0 0 calc((100% - min(960px, 100vw - 48px)) / 2);
     }
 
+    /* the Introduction's images: more room above them, and around the
+       caption */
     #overview > .article-figure {
-      margin-top: 0;
+      margin-top: 40px;
+    }
+
+    #overview > .article-figure figcaption {
+      margin-top: 32px;
     }
 
     .article-figure .figure-images {
@@ -1167,7 +1173,7 @@
     }
 
     #overview > .article-figure + .epigraph {
-      margin-top: 48px;
+      margin-top: 72px;
     }
 
     .article-body #overview + section {
@@ -1442,7 +1448,7 @@
       top: 0;
       left: 50%;
       width: 100vw;
-      height: 1.5px;
+      height: 2px;
       transform: translateX(-50%);
       background: var(--canvas-ink);
     }
