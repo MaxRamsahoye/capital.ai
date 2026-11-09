@@ -60,7 +60,7 @@ const CSS = `
   .epigraph figcaption { margin-top: 3pt; font-family: 'IBM Plex Sans', sans-serif; font-size: 8.5pt; color: #8c8c8c; }
   /* longer quotations: set in, with a thin rule */
   .block-quote { margin: 16pt 0 16pt; padding-left: 1em; border-left: 0.5pt solid #b0b2b6; }
-  .block-quote p { margin: 0; }
+  .block-quote p { margin: 0; font-size: 12pt; line-height: 1.38; }
   /* quotes together: closer to each other than to the text around them */
   .epigraph:has(+ .epigraph) { margin-bottom: 9pt; }
   .epigraph + .epigraph { margin-top: 9pt; }
