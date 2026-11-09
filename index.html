@@ -803,9 +803,30 @@
       line-height: 1.35;
     }
 
-    .toc li::before {
-      content: counter(toc-counter) '. ';
-      color: var(--canvas-accent);
+    /* Parts in the menu's own weight, their chapters smaller and set in
+       beneath them; the part being read in bold */
+    .toc > ol > li {
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .toc .toc-sub {
+      margin: 6px 0 0 12px;
+    }
+
+    .toc .toc-sub li {
+      font-size: 12.5px;
+      font-weight: 400;
+      margin-bottom: 5px;
+    }
+
+    .toc .toc-sub a {
+      color: color-mix(in srgb, var(--canvas-ink) 65%, var(--canvas-bg));
+    }
+
+    .toc a.toc-current {
+      color: var(--canvas-ink);
+      font-weight: 600;
     }
 
     .toc a {
@@ -2198,7 +2219,7 @@
     <a class="site-title" href="./">The<br>Capital-AI</a>
 
     <nav class="toc" aria-label="Contents" data-upcoming='[]'>
-      <p class="toc-label">Civilisation Research</p>
+      <p class="toc-label">Contents</p>
       <ol></ol>
     </nav>
   </div>
@@ -2287,7 +2308,7 @@
           </div>
 
           <div class="article-body">
-            <section id="overview">
+            <section id="overview" data-toc-label="Introduction">
               <button class="next-screen next-screen-overview" type="button" data-target="structure" aria-label="Continue to the next section">
                 <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
                 <polygon points="14,19.469 21.031,8.531 14,11.813 6.969,8.531"/>
@@ -2345,7 +2366,7 @@
               <p>Ultimately, I aim to cohere AI theory, Systems theory (Cybernetics), Economic Theory, Evolutionary Theory, Accelerationist theory and Critical Theory (New Materialism) into a cross-disciplinary, anti-capitalist paradigm, metanarrative and aesthetic.</p>
             </section>
 
-            <section id="structure" class="in-band">
+            <section id="structure" class="in-band" data-toc="off">
               <h2><a class="heading-link" href="#structure">Structure</a></h2>
 
               <h3 id="structure-part-1"><a class="heading-link" href="#structure-part-1">Part 1: Capitalism as an Artificial Superintelligence</a></h3>
@@ -2720,17 +2741,53 @@
       var tocNav = document.querySelector('.toc');
       var tocList = tocNav.querySelector('ol');
       var tocItemCount = 0;
-      document.querySelectorAll('.article-body > section[id]:not([data-toc="off"])').forEach(function (section) {
-        var heading = section.querySelector(':scope > h2, :scope > h3');
-        if (!heading) return;
-        var li = document.createElement('li');
+      // the menu follows the article's Contents: the Introduction, each Part
+      // with its chapters beneath it (named up to the colon), the Conclusion
+      var tocTargets = [];
+      function tocLink(href, text, target) {
         var a = document.createElement('a');
-        a.href = '#' + section.id;
-        a.textContent = heading.dataset.toc || heading.textContent;
-        li.appendChild(a);
+        a.href = href;
+        a.textContent = text;
+        tocTargets.push({ el: target, link: a });
+        return a;
+      }
+      document.querySelectorAll('.article-body > section[id]:not([data-toc="off"])').forEach(function (section) {
+        var heading = section.querySelector(':scope > h2');
+        var label = section.dataset.tocLabel || (heading && heading.textContent.replace(/\s+/g, ' ').trim());
+        if (!label) return;
+        var li = document.createElement('li');
+        li.appendChild(tocLink('#' + section.id, label, section));
+        var chapters = section.querySelectorAll(':scope > h3[id]');
+        if (chapters.length) {
+          var sub = document.createElement('ol');
+          sub.className = 'toc-sub';
+          chapters.forEach(function (h) {
+            var item = document.createElement('li');
+            item.appendChild(tocLink('#' + h.id, h.textContent.replace(/\s+/g, ' ').split(':')[0].trim(), h));
+            sub.appendChild(item);
+          });
+          li.appendChild(sub);
+        }
         tocList.appendChild(li);
         tocItemCount++;
       });
+      // the part of the article being read, marked in the menu
+      (function () {
+        var current = null;
+        function mark() {
+          var line = window.innerHeight * 0.35, found = null;
+          tocTargets.forEach(function (t) {
+            if (t.el.getBoundingClientRect().top <= line) found = t;
+          });
+          if (found === current) return;
+          if (current) current.link.classList.remove('toc-current');
+          if (found) found.link.classList.add('toc-current');
+          current = found;
+        }
+        window.addEventListener('scroll', mark, { passive: true });
+        window.addEventListener('resize', mark);
+        mark();
+      })();
       // sections still to come (named on the menu itself, where the Overviews
       // page reads them too): listed in the menu, greyed out, not yet links
       var upcoming = [];
