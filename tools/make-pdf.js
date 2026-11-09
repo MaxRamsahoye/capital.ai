@@ -70,7 +70,7 @@ const CSS = `
   .article-figure { margin: 0 0 6pt; break-inside: avoid; }
   .article-figure .figure-images { display: flex; gap: 6pt; align-items: flex-start; }
   .article-figure .figure-images img { display: block; flex-basis: 0; min-width: 0; width: 100%; height: auto; }
-  .article-figure figcaption { margin-top: 5pt; font-family: 'IBM Plex Sans', sans-serif; font-size: 8.5pt; color: #8c8c8c; }
+  .article-figure figcaption { margin-top: 9pt; text-align: center; font-family: 'IBM Plex Sans', sans-serif; font-size: 8.5pt; color: #8c8c8c; }
   /* a black line above each Part */
   section[id^="part-"] { border-top: 0.75pt solid #000; padding-top: 14pt; }
   section[id^="part-"] > h2:first-child { margin-top: 0; }

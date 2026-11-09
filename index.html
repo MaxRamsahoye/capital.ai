@@ -1124,14 +1124,17 @@
        (as flex items, whose margins don't collapse) only one gap between */
     /* two images side by side above them, the same height (each grows in
        proportion to its width-to-height ratio), a caption below */
+    /* wider than the text column where there is room, centred on it */
     .article-body .article-figure {
-      max-width: 760px;
+      align-self: center;
+      width: min(960px, calc(100vw - 48px));
+      max-width: none;
       margin: 0;
     }
 
     .article-figure .figure-images {
       display: flex;
-      gap: 12px;
+      gap: 16px;
       align-items: flex-start;
     }
 
@@ -1144,7 +1147,8 @@
     }
 
     .article-figure figcaption {
-      margin-top: 12px;
+      margin-top: 22px;
+      text-align: center;
       font-family: 'IBM Plex Sans', sans-serif;
       font-size: 0.68em;
       line-height: 1.4;
@@ -2220,7 +2224,7 @@
 
               <figure class="article-figure">
                 <div class="figure-images">
-                  <img src="assets/paperclip-maximiser.jpg" width="1080" height="610" style="flex-grow: 1.7705" loading="lazy" alt="A cracked Earth fed into a funnel above a machine that pours out a stream of paperclips, beside the words: Could an AI Paperclip Maximizer machine turn the earth into paperclips?">
+                  <img src="assets/paperclip-maximiser.jpg?v=2" width="821" height="610" style="flex-grow: 1.3459" loading="lazy" alt="A cracked Earth fed into a funnel above a machine that pours out a stream of paperclips, beside the words: Could an AI Paperclip Maximizer machine turn the earth into paperclips?">
                   <img src="assets/recycling-chipper.jpg" width="764" height="1067" style="flex-grow: 0.716" loading="lazy" alt="A grinning businessman in a suit pushes the Earth into a wood chipper labelled CHIPPER, which sprays out banknotes">
                 </div>
                 <figcaption>&lsquo;The Paperclip Maximiser&rsquo; by Space Travel Future <span class="amp">&amp;</span> &lsquo;Recycling/Chipper&rsquo; by Steve Cutts</figcaption>
