@@ -49,22 +49,26 @@ const CSS = `
   .subtitle { margin: 0; font-weight: 600; font-size: 14.5pt; line-height: 1.3; }
   section { margin: 0 0 8pt; }
   h2 { margin: 28pt 0 9pt; font-size: 20pt; font-weight: 600; line-height: 1.2; break-after: avoid; }
-  h3 { margin: 20pt 0 7pt; font-size: 15.5pt; font-weight: 600; font-style: italic; break-after: avoid; }
+  h3 { margin: 20pt 0 7pt; font-size: 15.5pt; font-weight: 600; break-after: avoid; }
   h4, h5 { margin: 16pt 0 5pt; font-size: 13.5pt; font-weight: 600; break-after: avoid; }
   h5 { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 9pt; letter-spacing: 0.06em; text-transform: uppercase; }
   /* epigraphs: italic, set in, the source below in small grey IBM Plex */
-  .epigraph { margin: 0 0 14pt 1.6em; break-inside: avoid; }
+  .epigraph { margin: 14pt 0 14pt 1.6em; break-inside: avoid; }
   .epigraph blockquote { margin: 0; }
   .epigraph blockquote p { margin: 0; font-style: italic; }
   .epigraph figcaption { margin-top: 3pt; font-family: 'IBM Plex Sans', sans-serif; font-size: 8.5pt; color: #8c8c8c; }
   /* longer quotations: set in, with a thin rule */
-  .block-quote { margin: 0 0 9pt; padding-left: 1em; border-left: 0.5pt solid #b0b2b6; }
+  .block-quote { margin: 14pt 0 9pt; padding-left: 1em; border-left: 0.5pt solid #b0b2b6; }
   .block-quote p { margin: 0; }
   /* lists with a bold label for each item, an em dash before each */
   .label-list { list-style: none; margin: 0 0 9pt; padding: 0; }
   .label-list li { margin: 0 0 6pt; padding-left: 1.3em; text-indent: -1.3em; break-inside: avoid; }
   .label-list li::before { content: '\\2014\\00a0\\00a0'; }
   p { margin: 0 0 9pt; orphans: 3; widows: 3; }
+  /* a box set apart from the text in the band's silver grey, slightly rounded */
+  .callout { margin: 16pt 0; padding: 12pt 14pt; border-radius: 4pt; background: #c3c6ca; }
+  .callout > :first-child { margin-top: 0; }
+  .callout > :last-child { margin-bottom: 0; }
   /* the sections in the site's band (the Overview, then Basis and Contents
      together) on pages of their own in its midnight green, edge to edge,
      their text centred on the page */
