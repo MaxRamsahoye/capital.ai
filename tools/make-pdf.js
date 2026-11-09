@@ -213,7 +213,7 @@ const CSS = `
     const title = q('.article-title').cloneNode(true);
     title.querySelectorAll('.heading-link').forEach((a) => a.replaceWith(...a.childNodes));
     return {
-      author: q('.article-author').innerHTML,
+      author: (() => { const a = q('.article-author').cloneNode(true); a.querySelectorAll('.author-info').forEach((n) => n.remove()); return a.innerHTML; })(),
       title: title.innerHTML,
       titleText: q('.article-title').textContent.replace(/\s+/g, ' ').trim(),
       subtitle: q('.article-subtitle').innerHTML,
