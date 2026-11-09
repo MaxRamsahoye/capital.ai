@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link id="favicon-ico" rel="icon" href="favicon/favicon-light.ico?v=p" sizes="any">
-  <link id="favicon-32" rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32-light.png?v=p">
-  <link id="favicon-192" rel="icon" type="image/png" sizes="192x192" href="favicon/favicon-192-light.png?v=p">
-  <link id="favicon-apple" rel="apple-touch-icon" href="favicon/apple-touch-icon-light.png?v=p">
+  <link id="favicon-ico" rel="icon" href="favicon/favicon-light.ico?v=c" sizes="any">
+  <link id="favicon-32" rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32-light.png?v=c">
+  <link id="favicon-192" rel="icon" type="image/png" sizes="192x192" href="favicon/favicon-192-light.png?v=c">
+  <link id="favicon-apple" rel="apple-touch-icon" href="favicon/apple-touch-icon-light.png?v=c">
   <script>
     (function () {
       try {
@@ -38,18 +38,18 @@
         }
         if (t === 'dark') {
           var suffix = 'dark';
-          document.getElementById('favicon-ico').href = 'favicon/favicon-' + suffix + '.ico?v=p';
-          document.getElementById('favicon-32').href = 'favicon/favicon-32-' + suffix + '.png?v=p';
-          document.getElementById('favicon-192').href = 'favicon/favicon-192-' + suffix + '.png?v=p';
-          document.getElementById('favicon-apple').href = 'favicon/apple-touch-icon-' + suffix + '.png?v=p';
+          document.getElementById('favicon-ico').href = 'favicon/favicon-' + suffix + '.ico?v=c';
+          document.getElementById('favicon-32').href = 'favicon/favicon-32-' + suffix + '.png?v=c';
+          document.getElementById('favicon-192').href = 'favicon/favicon-192-' + suffix + '.png?v=c';
+          document.getElementById('favicon-apple').href = 'favicon/apple-touch-icon-' + suffix + '.png?v=c';
         }
       } catch (e) {}
       try {
         if (localStorage.getItem('ce.blueLinks') !== 'off') document.documentElement.classList.add('colour');  // blue links (c): on by default
         // ET Bembo headings are the default; f switches to Inter and back
         if (localStorage.getItem('ce.headings') !== 'sans') document.documentElement.classList.add('serif-headings');
-        // the band colour (b): silver grey by default, or midnight green, sepia, midnight blue or black
-        var band = localStorage.getItem('ce.bandColour') || 'silver';
+        // the band colour (b): black by default, or silver grey, midnight green, sepia or midnight blue
+        var band = localStorage.getItem('ce.bandColour') || 'black';
         if (band === 'purple') band = 'green';  // the default band was purple before it was green
         if (band === 'silver' || band === 'green' || band === 'midnight' || band === 'black') document.documentElement.classList.add('band-' + band);
         // design 2 is the default; d switches to design 1 and back
@@ -190,8 +190,8 @@
       --inverse-link: #c3c6ca;
     }
 
-    /* b (white theme only) cycles the Overview and footer: silver grey
-       (the default), midnight green, light sepia (above), midnight blue, black */
+    /* b (white theme only) cycles the Overview and footer: black
+       (the default, below), silver grey, midnight green, light sepia (above), midnight blue */
     html.band-silver:not([data-theme]) {
       /* links and highlights a darker silver grey, legible on white */
       --link-blue: #5f646a;
@@ -218,10 +218,14 @@
       --inverse-link: #8ab4f8;
     }
 
+    /* black: the default band, with the silver grey accent */
     html.band-black:not([data-theme]) {
+      --link-blue: #5f646a;
+      --selection-bg: rgba(170, 175, 181, 0.35);
+      --note-highlight: #e8eaec;
       --inverse-bg: #000000;
       --inverse-ink: #ffffff;
-      --inverse-link: #8ab4f8;
+      --inverse-link: #c3c6ca;
     }
 
     /* c: colour — blue accent; links stay semi-bold */
@@ -1157,8 +1161,21 @@
       --inverse-bg-alt: #f1e6d0;
     }
 
+    /* black: the Contents band black too, set off from Structure by a white
+       line across the page */
     html.band-black:not([data-theme]) {
-      --inverse-bg-alt: color-mix(in srgb, var(--inverse-bg) 88%, #fff);
+      --inverse-bg-alt: var(--inverse-bg);
+    }
+
+    html.band-black:not([data-theme]):not(.overview-lines) #structure + #contents::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 100vw;
+      height: 1px;
+      transform: translateX(-50%);
+      background: var(--inverse-ink);
     }
 
     html.band-silver:not([data-theme]) {
@@ -1317,7 +1334,7 @@
       margin: 0;
     }
 
-    /* a box set apart from the text: the band's silver grey, slightly
+    /* a box set apart from the text: the band's colour (black), slightly
        rounded corners (the Instrumental Convergent Goals, extended) */
     .article-body .callout {
       max-width: 760px;
@@ -3009,10 +3026,10 @@
 
       function setFavicons(isDark) {
         var suffix = isDark ? 'dark' : 'light';
-        document.getElementById('favicon-ico').href = 'favicon/favicon-' + suffix + '.ico?v=p';
-        document.getElementById('favicon-32').href = 'favicon/favicon-32-' + suffix + '.png?v=p';
-        document.getElementById('favicon-192').href = 'favicon/favicon-192-' + suffix + '.png?v=p';
-        document.getElementById('favicon-apple').href = 'favicon/apple-touch-icon-' + suffix + '.png?v=p';
+        document.getElementById('favicon-ico').href = 'favicon/favicon-' + suffix + '.ico?v=c';
+        document.getElementById('favicon-32').href = 'favicon/favicon-32-' + suffix + '.png?v=c';
+        document.getElementById('favicon-192').href = 'favicon/favicon-192-' + suffix + '.png?v=c';
+        document.getElementById('favicon-apple').href = 'favicon/apple-touch-icon-' + suffix + '.png?v=c';
       }
 
       function currentTheme() {
@@ -3060,7 +3077,7 @@
       });
 
       // b cycles the Overview and footer colours (white theme); c toggles the blue accent.
-      var BANDS = ['silver', 'green', '', 'midnight', 'black'];  // '' is light sepia; silver is the default
+      var BANDS = ['black', 'silver', 'green', '', 'midnight'];  // '' is light sepia; black is the default
 
       function cycleBand() {
         var current = BANDS.filter(function (b) { return b && root.classList.contains('band-' + b); })[0] || '';

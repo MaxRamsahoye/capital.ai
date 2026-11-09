@@ -66,19 +66,19 @@ const CSS = `
   .label-list li { margin: 0 0 6pt; padding-left: 1.3em; text-indent: -1.3em; break-inside: avoid; }
   .label-list li::before { content: '\\2014\\00a0\\00a0'; }
   p { margin: 0 0 9pt; orphans: 3; widows: 3; }
-  /* a box set apart from the text in the band's silver grey, slightly rounded */
-  .callout { margin: 16pt 0; padding: 12pt 14pt; border-radius: 4pt; background: #c3c6ca; }
+  /* a box set apart from the text in the band's black, slightly rounded */
+  .callout { margin: 16pt 0; padding: 12pt 14pt; border-radius: 4pt; background: #000; color: #fff; }
   .callout > :first-child { margin-top: 0; }
   .callout > :last-child { margin-bottom: 0; }
   /* the sections in the site's band (the Overview, then Basis and Contents
      together) on pages of their own in its midnight green, edge to edge,
      their text centred on the page */
-  @page band { margin: 0; background: #c3c6ca; @bottom-left { content: none; } @bottom-right { content: none; } }
+  @page band { margin: 0; background: #000; @bottom-left { content: none; } @bottom-right { content: none; } }
   .band-page {
     page: band; break-before: page; break-inside: avoid;
     box-sizing: border-box; min-height: 296.5mm; padding: 24mm;
     display: flex; flex-direction: column; justify-content: center;
-    background: #c3c6ca; color: #000;
+    background: #000; color: #fff;
   }
   .band-page a { color: inherit; text-decoration: underline; text-underline-offset: 2pt; }
   /* a little smaller than the article's text, so that the Overview keeps to its page */
@@ -89,7 +89,7 @@ const CSS = `
   .band-page section > :last-child { margin-bottom: 0; }
   /* the darker band of the site (Basis): edge to edge across its page, in
      the darker shade of the midnight green */
-  .band-page section.band-alt { margin: 0 -24mm; padding: 16mm 24mm; background: #b0b2b6; }
+  .band-page section.band-alt { margin: 0 -24mm; padding: 16mm 24mm; background: #000; border-top: 0.75pt solid #fff; }
   /* first on its page, it runs up to the top edge: the top of the page, not
      a band across it, and what follows sits below it rather than centred */
   .band-page:has(> section.band-alt:first-child) { justify-content: flex-start; }
