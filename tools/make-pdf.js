@@ -54,7 +54,7 @@ const CSS = `
   #part-3 h4 { font-size: 15pt; margin-top: 20pt; }
   h5 { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 9pt; letter-spacing: 0.06em; text-transform: uppercase; }
   /* epigraphs: italic, set in, the source below in small grey IBM Plex */
-  .epigraph { margin: 20pt 0 20pt 1.6em; break-inside: avoid; }
+  .epigraph { margin: 28pt 0 28pt 1.6em; break-inside: avoid; }
   .epigraph blockquote { margin: 0; }
   .epigraph blockquote p { margin: 0; font-style: italic; }
   .epigraph figcaption { margin-top: 3pt; font-family: 'IBM Plex Sans', sans-serif; font-size: 8.5pt; color: #8c8c8c; }
