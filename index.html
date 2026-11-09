@@ -1128,7 +1128,7 @@
     .article-body .article-figure {
       width: min(960px, calc(100vw - 48px));
       max-width: none;
-      margin: 32px 0 0 calc((100% - min(960px, 100vw - 48px)) / 2);
+      margin: 56px 0 0 calc((100% - min(960px, 100vw - 48px)) / 2);
     }
 
     /* the Introduction's images: more room above them, and around the
@@ -1137,9 +1137,6 @@
       margin-top: 40px;
     }
 
-    #overview > .article-figure figcaption {
-      margin-top: 32px;
-    }
 
     .article-figure .figure-images {
       display: flex;
@@ -1156,7 +1153,7 @@
     }
 
     .article-figure figcaption {
-      margin-top: 22px;
+      margin-top: 32px;
       text-align: center;
       font-family: 'IBM Plex Sans', sans-serif;
       font-size: 0.68em;
@@ -1172,7 +1169,7 @@
       margin-top: 0;
     }
 
-    #overview > .article-figure + .epigraph {
+    .article-body .article-figure + .epigraph {
       margin-top: 72px;
     }
 
@@ -1439,7 +1436,8 @@
        and 3; Part 1 follows the band) */
     .article-body :is(#part-2, #part-3) {
       position: relative;
-      padding-top: 56px;
+      margin-top: 128px;
+      padding-top: 88px;
     }
 
     .article-body :is(#part-2, #part-3)::before {

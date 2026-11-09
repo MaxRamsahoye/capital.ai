@@ -72,7 +72,7 @@ const CSS = `
   .article-figure .figure-images img { display: block; flex-basis: 0; min-width: 0; width: 100%; height: auto; }
   .article-figure figcaption { margin-top: 9pt; text-align: center; font-family: 'IBM Plex Sans', sans-serif; font-size: 8.5pt; color: #8c8c8c; }
   /* a black line across the whole page between the Parts (above Parts 2 and 3) */
-  :is(#part-2, #part-3) { border-top: 1.5pt solid #000; margin-left: -24mm; margin-right: -24mm; padding: 14pt 24mm 0; }
+  :is(#part-2, #part-3) { border-top: 1.5pt solid #000; margin: 26pt -24mm 0; padding: 24pt 24mm 0; }
   :is(#part-2, #part-3) > h2:first-child { margin-top: 0; }
   /* lists with a bold label for each item, an em dash before each */
   .label-list { list-style: none; margin: 0 0 9pt; padding: 0; }
