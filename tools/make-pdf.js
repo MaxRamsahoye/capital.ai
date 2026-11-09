@@ -34,7 +34,7 @@ const CSS = `
     @top-right { content: 'The\\A Capital-AI'; white-space: pre; font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 10pt; line-height: 1.15; letter-spacing: 0.06em; text-transform: uppercase; text-align: right; vertical-align: bottom; padding-bottom: 2mm; color: #000; }
   }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { margin: 0; font-family: 'ET Bembo', Georgia, serif; font-size: 13.5pt; line-height: 1.42; color: #000; }
+  body { margin: 0; font-family: 'ET Bembo', Georgia, serif; font-size: 14.5pt; line-height: 1.42; color: #000; }
   a { color: #5f646a; text-decoration: none; }
   .amp { font-style: normal; }
   /* the title on a page of its own, a little below the middle */
@@ -48,10 +48,10 @@ const CSS = `
   h1 .title-line { display: block; white-space: nowrap; }
   .subtitle { margin: 0; font-weight: 600; font-size: 14.5pt; line-height: 1.3; }
   section { margin: 0 0 8pt; }
-  h2 { margin: 28pt 0 9pt; font-size: 20pt; font-weight: 600; line-height: 1.2; break-after: avoid; }
-  h3 { margin: 20pt 0 7pt; font-size: 15.5pt; font-weight: 600; break-after: avoid; }
-  h4, h5 { margin: 16pt 0 5pt; font-size: 13.5pt; font-weight: 600; break-after: avoid; }
-  #part-3 h4 { font-size: 15pt; margin-top: 20pt; }
+  h2 { margin: 28pt 0 9pt; font-size: 22pt; font-weight: 600; line-height: 1.2; break-after: avoid; }
+  h3 { margin: 20pt 0 7pt; font-size: 17pt; font-weight: 600; break-after: avoid; }
+  h4, h5 { margin: 16pt 0 5pt; font-size: 14.5pt; font-weight: 600; break-after: avoid; }
+  #part-3 h4 { font-size: 16pt; margin-top: 20pt; }
   h5 { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 9pt; letter-spacing: 0.06em; text-transform: uppercase; }
   /* epigraphs: italic, set in, the source below in small grey IBM Plex */
   .epigraph { margin: 28pt 0 28pt 1.6em; break-inside: avoid; }
@@ -60,7 +60,7 @@ const CSS = `
   .epigraph figcaption { margin-top: 3pt; font-family: 'IBM Plex Sans', sans-serif; font-size: 8.5pt; color: #8c8c8c; }
   /* longer quotations: set in, with a thin rule */
   .block-quote { margin: 16pt 0 16pt; padding-left: 1em; border-left: 0.5pt solid #b0b2b6; }
-  .block-quote p { margin: 0; font-size: 12pt; line-height: 1.38; }
+  .block-quote p { margin: 0; font-size: 13pt; line-height: 1.38; }
   /* quotes together: closer to each other than to the text around them */
   .epigraph:has(+ .epigraph) { margin-bottom: 9pt; }
   .epigraph + .epigraph { margin-top: 9pt; }
