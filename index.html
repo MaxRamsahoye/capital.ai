@@ -901,11 +901,11 @@
       margin-right: 0;
     }
 
-    /* the title as wide as the first screen allows: sized so its longest
-       line ("Capitalism as an Unaligned") fills about nine-tenths of it */
+    /* the title sized to the first screen: at most 60px, and on narrower
+       screens so its longest line ("Capitalism as an Unaligned") fits */
     .main-area .article-header .article-title {
       width: 100%;
-      font-size: min(70px, calc(min(960px, 100vw - 48px) / 13.6));
+      font-size: min(60px, calc(min(960px, 100vw - 48px) / 13.6));
     }
 
     .article-header .next-screen {
