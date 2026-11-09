@@ -1166,6 +1166,16 @@
       height: auto;
     }
 
+    /* slightly rounded on the outside corners only; square where the two
+       images face each other */
+    .article-figure .figure-images img:first-child {
+      border-radius: 8px 0 0 8px;
+    }
+
+    .article-figure .figure-images img:last-child {
+      border-radius: 0 8px 8px 0;
+    }
+
     .article-figure figcaption {
       margin-top: 32px;
       text-align: center;
