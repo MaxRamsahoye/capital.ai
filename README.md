@@ -1,2 +1,2 @@
-# civilisationresearchparadigm
-https://maxramsahoye.github.io/civilisationresearchparadigm/
+# capital.ai
+https://maxramsahoye.github.io/capital.ai
