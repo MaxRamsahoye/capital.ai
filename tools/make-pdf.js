@@ -51,6 +51,7 @@ const CSS = `
   h2 { margin: 28pt 0 9pt; font-size: 20pt; font-weight: 600; line-height: 1.2; break-after: avoid; }
   h3 { margin: 20pt 0 7pt; font-size: 15.5pt; font-weight: 600; break-after: avoid; }
   h4, h5 { margin: 16pt 0 5pt; font-size: 13.5pt; font-weight: 600; break-after: avoid; }
+  #part-3 h4 { font-size: 15pt; margin-top: 20pt; }
   h5 { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 9pt; letter-spacing: 0.06em; text-transform: uppercase; }
   /* epigraphs: italic, set in, the source below in small grey IBM Plex */
   .epigraph { margin: 14pt 0 14pt 1.6em; break-inside: avoid; }
