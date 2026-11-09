@@ -661,7 +661,7 @@
       position: fixed;
       /* vertically centred on the theme toggle */
       top: 31px;
-      right: calc(var(--frame-margin) + 40px);
+      left: calc(var(--frame-margin) + 40px);
       width: 28px;
       height: 28px;
       transform: rotate(-90deg);
@@ -696,7 +696,46 @@
     @media (max-width: 600px) {
       .progress-ring {
         top: 22px;
-        right: 24px;
+        left: 24px;
+      }
+    }
+
+    /* the site's name in the top right while reading, as the progress ring
+       shows in the top left; set as the site title is */
+    .canvas-title {
+      position: fixed;
+      top: 24px;
+      right: calc(var(--frame-margin) + 40px);
+      z-index: 40;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 18px;
+      line-height: 1.15;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: right;
+      white-space: nowrap;
+      color: var(--frame-ink);
+      text-decoration: none;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+
+    body.past-overview .canvas-title {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    body.past-overview.footer-in-view .canvas-title {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* only where the margin beside the text has room for it */
+    @media (max-width: 1099px) {
+      .canvas-title {
+        display: none;
       }
     }
 
@@ -2303,6 +2342,7 @@
     </button>
   </div>
 
+  <a class="canvas-title" href="#" aria-label="The Capital-AI: back to the top">The<br>Capital-AI</a>
   <svg class="progress-ring" viewBox="0 0 30 30" aria-hidden="true">
     <circle class="progress-ring-track" cx="15" cy="15" r="13"/>
     <circle class="progress-ring-fill" cx="15" cy="15" r="13"/>
