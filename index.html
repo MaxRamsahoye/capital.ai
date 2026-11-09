@@ -772,6 +772,14 @@
       transition: opacity 0.3s ease, visibility 0s;
     }
 
+    /* out of the way while a pair of images, which reach into its column,
+       is on screen */
+    body.figure-in-view .toc {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    }
+
     /* too little room beside the text for it on narrower windows */
     @media (max-width: 1279px) {
       .toc {
@@ -1175,6 +1183,17 @@
       margin-top: 64px;
     }
 
+
+    /* Part 3's images, wider still (up to 1200px), opening the Part above
+       its headings */
+    .article-body .article-figure.figure-wide {
+      width: min(1200px, calc(100vw - 48px));
+      margin: 0 0 0 calc((100% - min(1200px, 100vw - 48px)) / 2);
+    }
+
+    .article-body .article-figure + h2 {
+      margin-top: 96px;
+    }
 
     .article-figure .figure-images {
       display: flex;
@@ -2583,17 +2602,17 @@
             </section>
 
             <section id="part-3">
-              <h2 data-toc="Part 3"><a class="heading-link" href="#part-3">Part 3 | Criticisms and Implications</a></h2>
-
-              <h3 id="the-history-of-progress"><a class="heading-link" href="#the-history-of-progress">The History of Progress is the History of Deceptive Alignment: Capitalism (as a Shoggoth) with a Smiley Face</a></h3>
-
-              <figure class="article-figure">
+              <figure class="article-figure figure-wide">
                 <div class="figure-images">
                   <img src="assets/shoggoth-smiley-face.jpg" width="1357" height="758" style="flex-grow: 1.7902" loading="lazy" alt="A line drawing of a many-eyed, tentacled monster labelled Unsupervised Learning, with a pink human mask labelled Supervised Fine-tuning and a yellow smiley face labelled RLHF (cherry on top) on the end of one tentacle">
                   <img src="assets/capitalism-human-face.jpg" width="834" height="590" style="flex-grow: 1.4136" loading="lazy" alt="A poster of a mass of tentacles, eyes and toothed mouths reaching out of space, with the words CAPITALISM with a human face">
                 </div>
                 <figcaption>&lsquo;Shoggoth with a Smiley Face&rsquo; by Twitter User @anthrupad <span class="amp">&amp;</span> &lsquo;Capitalism with a Human Face&rsquo; by Fuck Yeah Anarchist Posters.</figcaption>
               </figure>
+
+              <h2 data-toc="Part 3"><a class="heading-link" href="#part-3">Part 3 | Criticisms and Implications</a></h2>
+
+              <h3 id="the-history-of-progress"><a class="heading-link" href="#the-history-of-progress">The History of Progress is the History of Deceptive Alignment: Capitalism (as a Shoggoth) with a Smiley Face</a></h3>
 
               <figure class="epigraph">
                 <blockquote><p>‘What it [capitalism] is in itself is only tactically connected to what it does for us&nbsp;&mdash; that is (in part), what it trades us for its self-escalation. Our phenomenology is its camouflage…[we] think we have understood something about capitalism, rather than about what capitalism has learnt to think of the apes it arose among.’</p></blockquote>
@@ -2775,6 +2794,17 @@
         tocList.appendChild(li);
         tocItemCount++;
       });
+      // the menu steps aside while a pair of images is on screen
+      if ('IntersectionObserver' in window) {
+        var figuresShown = new Set();
+        var figObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) figuresShown.add(en.target); else figuresShown.delete(en.target);
+          });
+          document.body.classList.toggle('figure-in-view', figuresShown.size > 0);
+        });
+        document.querySelectorAll('.article-figure').forEach(function (f) { figObserver.observe(f); });
+      }
       // the part of the article being read, marked in the menu
       (function () {
         var current = null;
