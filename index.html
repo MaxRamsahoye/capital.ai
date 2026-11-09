@@ -1238,8 +1238,8 @@
 
     html.design-2 #overview {
       min-height: 0;
-      /* the band (h) spans exactly where the dividing lines sit */
-      padding: 72px 0;
+      /* no heading: the text starts straight away, under the down arrow */
+      padding: 0 0 72px;
       opacity: 0;
       /* while hidden it lets clicks through to the down arrow it overlaps */
       pointer-events: none;
@@ -2173,8 +2173,6 @@
               </svg>
               </button>
 
-              <h2><a class="heading-link" href="#overview">Introduction: Artificial Intelligence, Capitalism <span class="amp">&amp;</span> Existential Risk</a></h2>
-
               <p>Over the past few decades, the subject of artificial intelligence (AI) has received widespread attention: from governments, corporations and universities to media organisations, social movements and public figures. Defining this emerging discourse &ndash; particularly in the Effective Altruist, Rationalist, Accelerationist, Progress Studies and Existential Risk Studies ecosystem &ndash; has been a focus on the utopian and dystopian possibilities of AI as a dual-use and general-purpose technology.</p>
 
               <p>Notably, leading theorists from within the field &ndash; such as Russell, Bostrom, Yudkowsky, Dafoe and Tegmark &ndash; have emphasised the powerful capabilities that AI will likely develop, the potential risks and rewards of AI dependent on its alignment with human values and the considerable challenges ahead to governing the development of AI safely.</p>
@@ -3004,7 +3002,7 @@
         if (btn.dataset.target === 'overview' && isDesign2()) {
           // fade the Overview in and move down to the top of its band
           showOverview();
-          animateScrollTo(overviewEl.getBoundingClientRect().top + window.scrollY, 900);
+          animateScrollTo(overviewEl.getBoundingClientRect().top + window.scrollY - 72, 900);
           return;
         }
         var target = document.getElementById(btn.dataset.target);
@@ -3136,7 +3134,6 @@
         if (window.placeOverview) window.placeOverview();
         try { localStorage.setItem('ce.overviewStyle', on ? 'lines' : 'band'); } catch (err) {}
       }
-
 
       var SHORTCUTS = { b: cycleBand, c: toggleColour, d: toggleDesign, f: toggleSerifHeadings, h: toggleOverviewLines };
 
