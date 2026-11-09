@@ -901,8 +901,11 @@
       margin-right: 0;
     }
 
+    /* the title as wide as the first screen allows: sized so its longest
+       line ("Capitalism as an Unaligned") fills about nine-tenths of it */
     .main-area .article-header .article-title {
       width: 100%;
+      font-size: min(70px, calc(min(960px, 100vw - 48px) / 13.6));
     }
 
     .article-header .next-screen {
@@ -1163,13 +1166,13 @@
     .article-body .article-figure {
       width: min(960px, calc(100vw - 48px));
       max-width: none;
-      margin: 56px 0 0 calc((100% - min(960px, 100vw - 48px)) / 2);
+      margin: 80px 0 0 calc((100% - min(960px, 100vw - 48px)) / 2);
     }
 
     /* the Introduction's images: more room above them, and around the
        caption */
     #overview > .article-figure {
-      margin-top: 40px;
+      margin-top: 64px;
     }
 
 
@@ -1198,7 +1201,7 @@
     }
 
     .article-figure figcaption {
-      margin-top: 32px;
+      margin-top: 44px;
       text-align: center;
       font-family: 'IBM Plex Sans', sans-serif;
       font-size: 0.68em;
@@ -1215,7 +1218,7 @@
     }
 
     .article-body .article-figure + .epigraph {
-      margin-top: 72px;
+      margin-top: 96px;
     }
 
     .article-body #overview + section {
