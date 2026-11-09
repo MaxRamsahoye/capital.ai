@@ -942,6 +942,17 @@
       }
     }
 
+    /* the paperclip above the author's name, cropped to a circle */
+    .article-image {
+      display: block;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      margin: 0 0 28px;
+    }
+
     .article-author {
       font-family: 'IBM Plex Sans', sans-serif;
       font-size: 17px;
@@ -2145,6 +2156,7 @@
       <main class="main-area">
         <article>
           <div class="article-header">
+            <img class="article-image" src="assets/capital-ai.png" width="96" height="96" alt="A glowing green paperclip against a starry sky">
             <p class="article-author"><a class="author-link" href="https://maxramsahoye.github.io/max/" target="_blank" rel="noopener">Max Ramsahoye</a></p>
             <h1 class="article-title"><a class="heading-link title-top" href="#"><span class="title-line">The Capital-AI:</span> <span class="title-line">Capitalism as an Unaligned</span> <span class="title-line">Artificial Superintelligence</span></a></h1>
             <p class="article-subtitle">A Critical Cybernetic Theory-Fiction of Techno-Capital Acceleration</p>
