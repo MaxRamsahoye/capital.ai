@@ -48,10 +48,10 @@
         if (localStorage.getItem('ce.blueLinks') !== 'off') document.documentElement.classList.add('colour');  // blue links (c): on by default
         // ET Bembo headings are the default; f switches to Inter and back
         if (localStorage.getItem('ce.headings') !== 'sans') document.documentElement.classList.add('serif-headings');
-        // the band colour (b): midnight green by default, or sepia, midnight blue or black
-        var band = localStorage.getItem('ce.bandColour') || 'green';
+        // the band colour (b): silver grey by default, or midnight green, sepia, midnight blue or black
+        var band = localStorage.getItem('ce.bandColour') || 'silver';
         if (band === 'purple') band = 'green';  // the default band was purple before it was green
-        if (band === 'green' || band === 'midnight' || band === 'black') document.documentElement.classList.add('band-' + band);
+        if (band === 'silver' || band === 'green' || band === 'midnight' || band === 'black') document.documentElement.classList.add('band-' + band);
         // design 2 is the default; d switches to design 1 and back
         if (localStorage.getItem('ce.design') !== '1') document.documentElement.classList.add('design-2');
         // the Overview's shaded band is the default; h switches to dividing lines
@@ -179,19 +179,29 @@
       --canvas-ink: #ffffff;
       --canvas-accent: #ffffff;
       --canvas-track-tint: rgba(255, 255, 255, 0.15);
-      --selection-bg: rgba(148, 218, 183, 0.35);
-      --note-highlight: #174b33;
-      --rule: #133e26;
+      --selection-bg: rgba(195, 198, 202, 0.3);
+      --note-highlight: #33363a;
+      --rule: #2b2d30;
       --muted: #8c8c8c;
-      --link-blue: #8dd9aa;
-      /* the midnight green, as with the white theme's default band */
-      --inverse-bg: #0a2d1b;
-      --inverse-ink: #fbf6ec;
-      --inverse-link: #8dd9aa;
+      --link-blue: #c3c6ca;
+      /* a dark silver grey, as with the white theme's default band */
+      --inverse-bg: #2b2d30;
+      --inverse-ink: #eceef0;
+      --inverse-link: #c3c6ca;
     }
 
-    /* b (white theme only) cycles the Overview and footer: midnight green
-       (the default), light sepia (above), midnight blue, black */
+    /* b (white theme only) cycles the Overview and footer: silver grey
+       (the default), midnight green, light sepia (above), midnight blue, black */
+    html.band-silver:not([data-theme]) {
+      /* links and highlights a darker silver grey, legible on white */
+      --link-blue: #5f646a;
+      --selection-bg: rgba(170, 175, 181, 0.35);
+      --note-highlight: #e8eaec;
+      --inverse-bg: #c3c6ca;
+      --inverse-ink: #000000;
+      --inverse-link: #2f3338;
+    }
+
     html.band-green:not([data-theme]) {
       /* links and highlights green, rather than blue */
       --link-blue: #167e49;
@@ -1127,12 +1137,16 @@
       --inverse-bg-alt: color-mix(in srgb, var(--inverse-bg) 80%, #000);
     }
 
-    :root:not([data-theme]):not(.band-green):not(.band-midnight):not(.band-black) {
+    :root:not([data-theme]):not(.band-silver):not(.band-green):not(.band-midnight):not(.band-black) {
       --inverse-bg-alt: #f1e6d0;
     }
 
     html.band-black:not([data-theme]) {
       --inverse-bg-alt: color-mix(in srgb, var(--inverse-bg) 88%, #fff);
+    }
+
+    html.band-silver:not([data-theme]) {
+      --inverse-bg-alt: color-mix(in srgb, var(--inverse-bg) 90%, #000);
     }
 
     html[data-theme="midnight"] {
@@ -2681,7 +2695,7 @@
       });
 
       // b cycles the Overview and footer colours (white theme); c toggles the blue accent.
-      var BANDS = ['green', '', 'midnight', 'black'];  // '' is light sepia; green is the default
+      var BANDS = ['silver', 'green', '', 'midnight', 'black'];  // '' is light sepia; silver is the default
 
       function cycleBand() {
         var current = BANDS.filter(function (b) { return b && root.classList.contains('band-' + b); })[0] || '';
