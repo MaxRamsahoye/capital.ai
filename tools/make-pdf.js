@@ -27,7 +27,7 @@ const CSS = `
   @page {
     size: A4;
     margin: 24mm 24mm 22mm;
-    @bottom-left { content: 'capital.ai'; font-family: 'IBM Plex Sans', sans-serif; font-size: 8pt; color: #5f646a; vertical-align: middle; }
+    @bottom-left { content: 'capital.ai'; font-family: 'IBM Plex Sans', sans-serif; font-size: 8pt; color: #39ff14; vertical-align: middle; }
     @bottom-right { content: counter(page); font-family: 'IBM Plex Sans', sans-serif; font-size: 8pt; color: #777; vertical-align: middle; }
   }
   @page :first {
@@ -122,6 +122,10 @@ const CSS = `
      the site, starting a page of its own */
   .intro-page { break-before: page; }
   .intro-page h2 { margin-top: 0; }
+  /* a page of its own for each pair of images, centred top to bottom */
+  .figure-page { break-before: page; break-after: page; height: 248mm; display: flex; flex-direction: column; justify-content: center; }
+  .figure-page .article-figure { margin: 0; }
+  .figure-page + section { break-before: page; }
   /* the article proper starts on a page of its own */
   .article-start { break-before: page; }
   .article-start > h2:first-child { margin-top: 0; }
@@ -148,6 +152,19 @@ const CSS = `
     body.querySelectorAll('button, .sidenote, .sidenote-label').forEach((n) => n.remove());
     // headings lose their self-links, keeping their text
     body.querySelectorAll('.heading-link').forEach((a) => a.replaceWith(...a.childNodes));
+    // each pair of images on a page of its own, centred on it; where the
+    // images open a Part (after only its headings), their page comes before
+    // the Part, so its headings start the page after
+    body.querySelectorAll('figure.article-figure').forEach((f) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'figure-page';
+      const section = f.closest('section');
+      let prev = f.previousElementSibling, onlyHeadings = true;
+      for (; prev; prev = prev.previousElementSibling) if (!/^H[1-6]$/.test(prev.tagName)) { onlyHeadings = false; break; }
+      f.replaceWith(wrap);
+      wrap.appendChild(f);
+      if (section && section.id !== 'overview' && onlyHeadings) section.before(wrap);
+    });
     const sections = Array.from(body.children);
     // the sections in the Overview's band, kept together as the lead-in
     let n = 0;
