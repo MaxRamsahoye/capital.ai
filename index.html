@@ -870,6 +870,20 @@
     }
 
     /* line the triangle itself up with the left edge of the text */
+    /* the first screen as wide as the Introduction's images (up to 960px),
+       centred on the text column, so the title starts level with their left
+       edge */
+    .main-area .article-header {
+      width: min(960px, calc(100vw - 48px));
+      max-width: none;
+      margin-left: calc((100% - min(960px, 100vw - 48px)) / 2);
+      margin-right: 0;
+    }
+
+    .main-area .article-header .article-title {
+      width: 100%;
+    }
+
     .article-header .next-screen {
       margin-left: -10px;
     }
