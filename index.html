@@ -1126,10 +1126,13 @@
        proportion to its width-to-height ratio), a caption below */
     /* wider than the text column where there is room, centred on it */
     .article-body .article-figure {
-      align-self: center;
       width: min(960px, calc(100vw - 48px));
       max-width: none;
-      margin: 0;
+      margin: 32px 0 0 calc((100% - min(960px, 100vw - 48px)) / 2);
+    }
+
+    #overview > .article-figure {
+      margin-top: 0;
     }
 
     .article-figure .figure-images {
@@ -2501,6 +2504,14 @@
               <h2 data-toc="Part 3"><a class="heading-link" href="#part-3">Part 3 | Criticisms and Implications</a></h2>
 
               <h3 id="the-history-of-progress"><a class="heading-link" href="#the-history-of-progress">The History of Progress is the History of Deceptive Alignment: Capitalism (as a Shoggoth) with a Smiley Face</a></h3>
+
+              <figure class="article-figure">
+                <div class="figure-images">
+                  <img src="assets/shoggoth-smiley-face.jpg" width="1357" height="758" style="flex-grow: 1.7902" loading="lazy" alt="A line drawing of a many-eyed, tentacled monster labelled Unsupervised Learning, with a pink human mask labelled Supervised Fine-tuning and a yellow smiley face labelled RLHF (cherry on top) on the end of one tentacle">
+                  <img src="assets/capitalism-human-face.jpg" width="834" height="590" style="flex-grow: 1.4136" loading="lazy" alt="A poster of a mass of tentacles, eyes and toothed mouths reaching out of space, with the words CAPITALISM with a human face">
+                </div>
+                <figcaption>&lsquo;Shoggoth with a Smiley Face&rsquo; by Twitter User @anthrupad <span class="amp">&amp;</span> &lsquo;Capitalism with a Human Face&rsquo; by Fuck Yeah Anarchist Posters.</figcaption>
+              </figure>
 
               <figure class="epigraph">
                 <blockquote><p>‘What it [capitalism] is in itself is only tactically connected to what it does for us&nbsp;&mdash; that is (in part), what it trades us for its self-escalation. Our phenomenology is its camouflage…[we] think we have understood something about capitalism, rather than about what capitalism has learnt to think of the apes it arose among.’</p></blockquote>
