@@ -126,6 +126,17 @@ const CSS = `
   .figure-page { break-before: page; break-after: page; height: 248mm; display: flex; flex-direction: column; justify-content: center; }
   .figure-page .article-figure { margin: 0; }
   .figure-page + section { break-before: page; }
+  /* the opening quotes, and the box, each on a page of their own, centred */
+  .quote-page, .callout-page { break-before: page; break-after: page; min-height: 248mm; display: flex; flex-direction: column; justify-content: center; }
+  .quote-page .epigraph:first-child { margin-top: 0; }
+  .quote-page .epigraph:last-child { margin-bottom: 0; }
+  .callout-page .callout { margin: 0; }
+  /* each Part's heading alone on its page, a little larger, centred top to
+     bottom; the Part's text starts the page after (so no dividing line) */
+  .part-page { break-before: page; break-after: page; min-height: 248mm; display: flex; flex-direction: column; justify-content: center; }
+  .part-page h2 { margin: 0; font-size: 28pt; line-height: 1.2; }
+  .part-page + section { break-before: page; border-top: 0 !important; margin-top: 0 !important; padding-top: 0 !important; }
+  .part-page + section > h3:first-child { margin-top: 0; }
   /* the article proper starts on a page of its own */
   .article-start { break-before: page; }
   .article-start > h2:first-child { margin-top: 0; }
@@ -164,6 +175,34 @@ const CSS = `
       f.replaceWith(wrap);
       wrap.appendChild(f);
       if (section && section.id !== 'overview' && onlyHeadings) section.before(wrap);
+    });
+    // the Introduction's opening quotes together on a page of their own
+    const intro = body.querySelector('#overview');
+    if (intro) {
+      const quotes = Array.from(intro.children).filter((e) => e.matches('figure.epigraph') && !e.previousElementSibling.matches('p'));
+      if (quotes.length) {
+        const wrap = document.createElement('div');
+        wrap.className = 'quote-page';
+        quotes[0].before(wrap);
+        quotes.forEach((q) => wrap.appendChild(q));
+      }
+    }
+    // each Part's heading on a page of its own, before the Part (and after
+    // any images that open it)
+    body.querySelectorAll('section[id^="part-"]').forEach((section) => {
+      const h = section.querySelector(':scope > h2');
+      if (!h) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'part-page';
+      section.before(wrap);
+      wrap.appendChild(h);
+    });
+    // each box (the Instrumental Convergent Goals) on a page of its own
+    body.querySelectorAll('.callout').forEach((c) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'callout-page';
+      c.before(wrap);
+      wrap.appendChild(c);
     });
     const sections = Array.from(body.children);
     // the sections in the Overview's band, kept together as the lead-in
