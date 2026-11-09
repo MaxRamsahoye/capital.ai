@@ -49,9 +49,9 @@ const CSS = `
   .subtitle { margin: 0; font-weight: 600; font-size: 14.5pt; line-height: 1.3; }
   section { margin: 0 0 8pt; }
   h2 { margin: 28pt 0 9pt; font-size: 22pt; font-weight: 600; line-height: 1.2; break-after: avoid; }
-  h3 { margin: 20pt 0 7pt; font-size: 17pt; font-weight: 600; break-after: avoid; }
-  h4, h5 { margin: 16pt 0 5pt; font-size: 14.5pt; font-weight: 600; break-after: avoid; }
-  #part-3 h4 { font-size: 16pt; margin-top: 20pt; }
+  h3 { margin: 28pt 0 7pt; font-size: 17pt; font-weight: 600; break-after: avoid; }
+  h4, h5 { margin: 22pt 0 5pt; font-size: 14.5pt; font-weight: 600; break-after: avoid; }
+  #part-3 h4 { font-size: 16pt; margin-top: 28pt; }
   h5 { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 9pt; letter-spacing: 0.06em; text-transform: uppercase; }
   /* epigraphs: italic, set in, the source below in small grey IBM Plex */
   .epigraph { margin: 28pt 0 28pt 1.6em; break-inside: avoid; }
@@ -82,7 +82,8 @@ const CSS = `
   .label-list li::before { content: '\\2014\\00a0\\00a0'; }
   p { margin: 0 0 9pt; orphans: 3; widows: 3; }
   /* a box set apart from the text in the band's black, slightly rounded */
-  .callout { margin: 16pt 0; padding: 12pt 14pt; border-radius: 4pt; background: #000; color: #fff; }
+  .callout { margin: 16pt 0; padding: 12pt 14pt; border-radius: 4pt; background: #000; color: #fff; font-size: 13pt; line-height: 1.38; }
+  .callout h4 { font-size: 13pt; }
   .callout > :first-child { margin-top: 0; }
   .callout > :last-child { margin-bottom: 0; }
   /* a passage set in from the left, its subheading in italics */
