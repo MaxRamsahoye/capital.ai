@@ -1222,6 +1222,11 @@
       padding-bottom: 128px;
     }
 
+    /* less room below the Contents list, at the foot of the band */
+    .article-body #contents.in-band {
+      padding-bottom: 72px;
+    }
+
     .article-body section.in-band + section:not(.in-band) {
       margin-top: 104px;
     }
@@ -1559,9 +1564,17 @@
     /* a little wider than the text column where there is room, so no item
        breaks across two lines */
     @media (min-width: 1200px) {
+      /* as wide as the images (960px), centred on the text column, the
+         heading moving out with it */
+      #contents > h2,
       #contents .live-list:not(.live-sub) {
-        width: 860px;
+        width: min(960px, calc(100vw - 48px));
         max-width: none;
+        margin-left: calc((100% - min(960px, 100vw - 48px)) / 2);
+      }
+
+      #contents .live-list:not(.live-sub) {
+        column-gap: 56px;
       }
     }
 
