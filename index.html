@@ -693,10 +693,11 @@
       opacity: 0;
     }
 
-    @media (max-width: 600px) {
+    /* only where the margin beside the text has room for it: on phones and
+       narrow windows it would sit over the text */
+    @media (max-width: 833px) {
       .progress-ring {
-        top: 22px;
-        left: 24px;
+        display: none;
       }
     }
 
